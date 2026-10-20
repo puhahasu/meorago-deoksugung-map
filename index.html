@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ffffff"><meta name="description" content="덕수궁 맵에서 궁금한 장소를 눌러 쉬운 설명을 읽어보세요. 머라고 현장 프로토타입."><title>머라고 · 덕수궁 맵</title>
-<link rel="icon" href="data:,"><link rel="stylesheet" href="./style.css?v=20261020-zoom-layout"><link rel="preload" href="./assets/deoksugung-map.jpg" as="image"><script defer src="./content.js"></script><script defer src="./app.js"></script>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="./style.css?v=20261020-unified-map"><link rel="preload" href="./assets/deoksugung-map.jpg" as="image"><script defer src="./content.js"></script><script defer src="./app.js?v=20261020-unified-map"></script>
 </head>
 <body>
 <a class="skip-link" href="#mainContent">본문으로 건너뛰기</a>
@@ -15,7 +15,7 @@
 <div class="map-window" id="mapWindow" aria-label="덕수궁 안내도. 확대하면 지도를 밀어 움직일 수 있습니다."><div class="map-board" id="mapBoard"><img id="mapImage" src="./assets/deoksugung-map.jpg" alt="궁능유적본부 덕수궁 안내도. 대한문, 중화전과 석조전 등 전각의 실제 배치." width="723" height="722" draggable="false"><svg id="mapLeaders" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="mapPins"></div></div></div>
 <div class="zoom-controls" role="group" aria-label="지도 확대 축소"><button id="zoomOut" type="button" aria-label="지도 축소">−</button><span id="zoomLabel" aria-live="polite">100%</span><button id="zoomIn" type="button" aria-label="지도 확대">＋</button></div>
 </div>
-<div class="map-meta"><span>파란 이름: 기준 문안 · 회색 이름: 검토 초안</span><span>입구 표시는 현재 위치가 아닙니다.</span></div>
+<div class="map-meta"><span>입구 표시는 현재 위치가 아닙니다.</span></div>
 <div class="welcome"><span>들어오셨다면</span><a href="#entrance">덕수궁은 어떤 곳일까? <span aria-hidden="true">›</span></a></div>
 <details class="place-picker" id="placePicker"><summary>장소 이름으로 찾기 <span aria-hidden="true">⌄</span></summary><ul id="placeList"></ul></details>
 <footer class="map-footer"><a href="https://royal.khs.go.kr/ROYAL/contents/R305000000.do?id=20250703143159150220&amp;schM=view" target="_blank" rel="noopener">지도: 궁능유적본부 · 2025 덕수궁 리플릿</a><p>10곳의 기존 문안을 연결한 테스트 버전입니다.<br>검토 초안은 최종 승인·현행 안내판 대조가 완료되지 않았습니다.</p></footer>

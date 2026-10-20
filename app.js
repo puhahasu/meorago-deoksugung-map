@@ -27,7 +27,7 @@
     const pins = byId('mapPins'), list=byId('placeList'), svg=byId('mapLeaders');
     for(const place of PLACES) {
       const a=document.createElement('a');a.href='#'+place.key;
-      a.className='map-pin'+(place.draft?'':' ready');
+      a.className='map-pin';
       a.style.left=place.label[0]+'%';a.style.top=place.label[1]+'%';
       a.textContent=place.mapName;a.dataset.key=place.key;
       a.setAttribute('aria-label',place.name+(place.draft?' · 검토 초안':' · 쉬운 설명'));
