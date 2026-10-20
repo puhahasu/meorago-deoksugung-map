@@ -30,7 +30,7 @@
       a.className='map-pin';
       a.style.left=place.label[0]+'%';a.style.top=place.label[1]+'%';
       a.textContent=place.mapName;a.dataset.key=place.key;
-      a.setAttribute('aria-label',place.name+(place.draft?' · 검토 초안':' · 쉬운 설명'));
+      a.setAttribute('aria-label',place.name+' · 쉬운 설명');
       pins.append(a);
       const ns='http://www.w3.org/2000/svg';
       const line=document.createElementNS(ns,'line');
@@ -39,14 +39,12 @@
       const point=document.createElementNS(ns,'circle');point.setAttribute('cx',place.anchor[0]);point.setAttribute('cy',place.anchor[1]);point.setAttribute('r','.7');point.setAttribute('class','anchor');svg.append(point);
       const li=document.createElement('li'), link=document.createElement('a');link.href='#'+place.key;
       const name=document.createElement('span');name.textContent=place.name;
-      const status=document.createElement('span');status.className='list-status';status.textContent=place.draft?'검토 초안':'기준 문안';
-      link.append(name,status);li.append(link);list.append(li);
+      link.append(name);li.append(link);list.append(li);
     }
   }
   function updateReadMarks() { document.querySelectorAll('.map-pin').forEach(a=>a.classList.toggle('was-read',readKeys.has(a.dataset.key))); }
   function renderReading(place) {
     byId('placeHeading').textContent=place.name;
-    byId('draftLabel').hidden=!place.draft;
     byId('summary').textContent=place.summary;
     byId('storyBody').replaceChildren(...place.paragraphs.map(paragraph));
     byId('fullStory').open=!!readingStates[place.key]?.expanded;
@@ -58,10 +56,7 @@
       const chevron=document.createElement('span');chevron.setAttribute('aria-hidden','true');chevron.textContent='⌄';summary.append(chevron);
       detail.append(summary,paragraph(note.body));footnotes.append(detail);
     }
-    byId('contentStatus').textContent='문안 상태: '+place.status;
-    byId('sourceNotes').textContent=place.notes;
-    const sourceList=byId('sourceList');sourceList.replaceChildren();
-    for(const source of place.sources||[]){const li=document.createElement('li'),a=document.createElement('a');a.href=source.url;a.textContent=source.title;a.target='_blank';a.rel='noopener';li.append(a);sourceList.append(li);}
+
   }
   function route() {
     const key=location.hash.slice(1)||'map';
@@ -84,7 +79,7 @@
     }
     rendered=true;
   }
-  function applyZoom(){mapBoard.style.width=(zoom*100)+'%';byId('zoomLabel').textContent=Math.round(zoom*100)+'%';byId('zoomOut').disabled=zoom===1;byId('zoomIn').disabled=zoom===2;}
+  function applyZoom(){mapBoard.style.width=(zoom*100)+'%';byId('zoomLabel').textContent=Math.round(zoom*100)+'%';byId('zoomOut').disabled=zoom===1;byId('zoomIn').disabled=zoom===2;byId('mapHint').hidden=zoom===1;}
   function changeZoom(direction){const levels=[1,1.5,2],next=levels[levels.indexOf(zoom)+direction];if(!next)return;const x=(mapWindow.scrollLeft+mapWindow.clientWidth/2)/mapBoard.clientWidth;const y=(mapWindow.scrollTop+mapWindow.clientHeight/2)/mapBoard.clientHeight;zoom=next;applyZoom();mapWindow.scrollLeft=x*mapBoard.clientWidth-mapWindow.clientWidth/2;mapWindow.scrollTop=y*mapBoard.clientHeight-mapWindow.clientHeight/2;remember();}
   byId('zoomIn').addEventListener('click',()=>changeZoom(1));byId('zoomOut').addEventListener('click',()=>changeZoom(-1));
   window.addEventListener('hashchange',route);
