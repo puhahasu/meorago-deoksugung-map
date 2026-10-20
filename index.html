@@ -2,15 +2,15 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#ffffff"><meta name="description" content="덕수궁 맵에서 궁금한 장소를 눌러 쉬운 설명을 읽어보세요. 머라고와 함께 덕수궁을 둘러보세요."><title>머라고 · 덕수궁 맵</title>
-<link rel="icon" href="data:,"><link rel="stylesheet" href="./style.css?v=20261020-initial-scale"><link rel="preload" href="./assets/deoksugung-map.jpg" as="image"><script defer src="./content.js"></script><script defer src="./app.js?v=20261020-initial-scale"></script>
+<meta name="theme-color" content="#ffffff"><meta name="description" content="덕수궁 맵에서 궁금한 장소를 눌러 쉬운 설명을 읽어보세요. 장소별 쉬운 설명으로 덕수궁을 둘러보세요."><title>덕수궁 쉬운안내</title>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="./style.css?v=20261020-easy-guide-nav"><link rel="preload" href="./assets/deoksugung-map.jpg" as="image"><script defer src="./content.js"></script><script defer src="./app.js?v=20261020-easy-guide-nav"></script>
 </head>
 <body>
 <a class="skip-link" href="#mainContent">본문으로 건너뛰기</a>
-<header class="site-header"><a class="wordmark" href="#map" aria-label="머라고 덕수궁 맵"><svg width="64" height="24" viewBox="0 0 124 38" aria-hidden="true"><path d="M10 7H22Q24 7 24 9V27Q24 29 22 29H10Q8 29 8 27V9Q8 7 10 7Z M36 5V31 M28 18H36 M46 7H59Q61 7 61 9V15Q61 17 59 17H48Q46 17 46 19V27Q46 29 48 29H62 M73 5V31 M73 18H81 M90 7H108Q110 7 110 9V21 M100 21V30 M88 30H115" fill="none" stroke="currentColor" stroke-width="6.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a><span class="site-context">덕수궁</span></header>
+<header class="site-header"><button id="backButton" class="nav-back" type="button" aria-label="이전 화면으로 돌아가기" hidden><span aria-hidden="true">‹</span></button><a id="serviceTitle" class="service-title" href="#map">덕수궁 쉬운안내</a><span id="headerPlace" class="site-context" hidden></span></header>
 <main id="mainContent">
-<section id="mapPage" aria-labelledby="mapHeading">
-<div class="page-heading"><h1 id="mapHeading">덕수궁, 여기서부터.</h1><p>궁금한 장소를 눌러보세요.</p></div>
+<section id="mapPage" aria-label="덕수궁 안내도">
+
 <div class="map-wrap">
 <div class="map-window" id="mapWindow" aria-label="덕수궁 안내도. 확대하면 지도를 밀어 움직일 수 있습니다."><div class="map-board" id="mapBoard"><img id="mapImage" src="./assets/deoksugung-map.jpg" alt="궁능유적본부 덕수궁 안내도. 대한문, 중화전과 석조전 등 전각의 실제 배치." width="723" height="722" draggable="false"><svg id="mapLeaders" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg><div id="mapPins"></div></div></div>
 <div class="zoom-controls" role="group" aria-label="지도 확대 축소"><button id="zoomOut" type="button" aria-label="지도 축소">−</button><span id="zoomLabel" aria-live="polite">100%</span><button id="zoomIn" type="button" aria-label="지도 확대">＋</button></div>
@@ -21,8 +21,8 @@
 <footer class="map-footer"><a href="https://royal.khs.go.kr/ROYAL/contents/R305000000.do?id=20250703143159150220&amp;schM=view" target="_blank" rel="noopener">지도: 궁능유적본부 · 2025 덕수궁 리플릿</a></footer>
 </section>
 <article id="readingPage" aria-labelledby="placeHeading" hidden>
-<a href="#map" class="top-back" data-return-map>‹ 덕수궁 맵</a>
-<div class="reading-content"><h1 id="placeHeading" class="reading-place" tabindex="-1"></h1>
+
+<div class="reading-content"><h1 id="placeHeading" class="sr-only" tabindex="-1"></h1>
 <div class="summary-surface"><h2 class="result-intro">그게 무슨 얘기냐면</h2><p id="summary" class="lead"></p></div>
 <details id="fullStory" class="story"><summary><span id="storyToggleLabel">더 자세히 읽기</span><span class="story-chevron" aria-hidden="true"></span></summary><div class="full-translation"><div id="storyBody" class="prose"></div><div id="footnotes" class="reading-footnotes"></div></div></details>
 

@@ -72,12 +72,20 @@
       current=place.key;renderReading(place);
       mapPage.hidden=true;readingPage.hidden=false;
       readKeys.add(place.key);updateReadMarks();
-      document.title=place.name+' · 머라고';
+      byId('headerPlace').hidden=false;
+      byId('headerPlace').textContent=place.name;
+      byId('backButton').hidden=false;
+      if(!history.state?.meoragoFromMap) history.replaceState({...history.state,meoragoFromMap:true},'');
+      document.title=place.name+' · 덕수궁 쉬운안내';
       byId('placeHeading').focus({preventScroll:true});
       requestAnimationFrame(()=>window.scrollTo(0,Number(readingStates[place.key]?.y)||0));
     } else {
       current=null;mapPage.hidden=false;readingPage.hidden=true;
-      document.title='머라고 · 덕수궁 맵';
+      byId('headerPlace').hidden=true;
+      byId('headerPlace').textContent='';
+      byId('backButton').hidden=true;
+      history.replaceState({...history.state,meoragoFromMap:false},'');
+      document.title='덕수궁 쉬운안내';
       if(key!=='map'){notice.textContent='해당 설명을 찾지 못했습니다. 맵에서 장소를 다시 선택해주세요.';notice.hidden=false;}
       applyZoom();
       requestAnimationFrame(()=>{mapWindow.scrollLeft=mapLeft;mapWindow.scrollTop=mapTop;window.scrollTo(0,mapY);});
@@ -86,6 +94,25 @@
   }
   function applyZoom(){mapBoard.style.width=(zoom*100)+'%';byId('zoomLabel').textContent=Math.round(zoom*100)+'%';byId('zoomOut').disabled=zoom===1;byId('zoomIn').disabled=zoom===2;byId('mapHint').hidden=zoom===1;}
   function changeZoom(direction){const levels=[1,1.5,2],next=levels[levels.indexOf(zoom)+direction];if(!next)return;const x=(mapWindow.scrollLeft+mapWindow.clientWidth/2)/mapBoard.clientWidth;const y=(mapWindow.scrollTop+mapWindow.clientHeight/2)/mapBoard.clientHeight;zoom=next;applyZoom();mapWindow.scrollLeft=x*mapBoard.clientWidth-mapWindow.clientWidth/2;mapWindow.scrollTop=y*mapBoard.clientHeight-mapWindow.clientHeight/2;remember();}
+  function returnToMap(event) {
+    event?.preventDefault();
+    if(!current) return;
+    remember();
+    if(history.state?.meoragoFromMap && history.length>1) history.back();
+    else location.hash='map';
+  }
+  byId('backButton').addEventListener('click',returnToMap);
+  byId('serviceTitle').addEventListener('click',returnToMap);
+  document.querySelectorAll('[data-return-map]').forEach(link=>link.addEventListener('click',returnToMap));
+  // Give directly opened place links an in-app back destination as well.
+  // Native browser back/forward and iOS edge-swipe remain untouched.
+  const initialKey=location.hash.slice(1);
+  if(PLACES.some(place=>place.key===initialKey) && !history.state?.meoragoFromMap) {
+    const readingURL=location.href;
+    const mapURL=new URL(readingURL);mapURL.hash='map';
+    history.replaceState({...history.state,meoragoFromMap:false},'',mapURL);
+    history.pushState({meoragoFromMap:true},'',readingURL);
+  }
   byId('zoomIn').addEventListener('click',()=>changeZoom(1));byId('zoomOut').addEventListener('click',()=>changeZoom(-1));
   window.addEventListener('hashchange',route);
   window.addEventListener('pagehide',remember);
