@@ -7,12 +7,17 @@
   let rendered = false;
   let current = null, mapY = 0, zoom = 1, mapLeft = 0, mapTop = 0;
   let readingStates = {}, readKeys = new Set();
+  // Only restore map magnification when continuing the same visit.
+  // Safari may retain sessionStorage across a newly opened QR/link.
+  const navigationType = performance.getEntriesByType('navigation')[0]?.type;
+  const continuingVisit = navigationType === 'reload' || navigationType === 'back_forward';
   function restoreState() {
     try {
       const s = JSON.parse(sessionStorage.getItem(stateKey) || '{}');
-      mapY = Number(s.mapY) || 0;
-      zoom = [1,1.5,2].includes(s.zoom) ? s.zoom : 1;
-      mapLeft = Number(s.mapLeft) || 0; mapTop = Number(s.mapTop) || 0;
+      mapY = continuingVisit ? Number(s.mapY) || 0 : 0;
+      zoom = continuingVisit && [1,1.5,2].includes(s.zoom) ? s.zoom : 1;
+      mapLeft = continuingVisit ? Number(s.mapLeft) || 0 : 0;
+      mapTop = continuingVisit ? Number(s.mapTop) || 0 : 0;
       readingStates = s.readingStates && typeof s.readingStates === 'object' ? s.readingStates : {};
       readKeys = new Set(Array.isArray(s.readKeys) ? s.readKeys : []);
     } catch (_) { /* Private browsing or disabled storage must not block reading. */ }
