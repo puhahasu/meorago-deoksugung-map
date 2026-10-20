@@ -18,3 +18,5 @@ html,body{width:100%;max-width:100%;text-size-adjust:100%;-webkit-text-size-adju
 
 /* Round-ended monoline Korean wordmark; detail navigation is place-first. */
 .guide-wordmark{display:block;width:180px;height:30px}.site-header{align-items:center;gap:6px}.site-header .nav-back{display:flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;margin-left:-10px;padding:0}.nav-back svg{display:block;flex-shrink:0;width:20px;height:20px}.place-navigation{display:flex;align-items:center;min-height:44px;margin:0;padding:0;border:0;color:#19243a;font-size:17px;font-weight:650;line-height:24px;letter-spacing:-.035em;text-decoration:none}.service-title{display:flex;align-items:center;min-height:44px}@media(max-width:350px){.guide-wordmark{width:174px;height:29px}.site-header{gap:6px}.site-header .nav-back{flex-basis:44px}.place-navigation{font-size:17px}}
+
+.guide-wordmark{width:156px;height:26px}@media(max-width:350px){.guide-wordmark{width:150px;height:25px}}
