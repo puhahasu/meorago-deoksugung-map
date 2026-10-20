@@ -12,3 +12,6 @@ html,body{width:100%;max-width:100%;text-size-adjust:100%;-webkit-text-size-adju
 
 /* Intro uses the same quiet blue disclosure styling as the reading screen. */
 .welcome{margin:14px 22px 0;padding:0;border-top:1px solid #e6eaf1}.welcome .intro-link{display:flex;justify-content:flex-start;align-items:center;gap:8px;min-height:52px;width:100%;margin-top:14px;padding:8px 0;color:#0062f5;font-size:15px;font-weight:700;line-height:1.5;text-decoration:none}.welcome .intro-link .intro-chevron{display:inline-block;width:7px;height:7px;flex-shrink:0;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);color:inherit}.welcome .intro-link:active{opacity:.8}
+
+/* Map state distinguishes explanations opened in this visit. */
+.map-pin{background:#edf5ff;border-color:#0062f5;color:#0062f5}.map-pin:active{background:#dcecff}.map-pin.was-read{background:#f1f3f6;border-color:#cbd2dc;color:#59677b}.map-pin.was-read:active{background:#e5e9ef}
