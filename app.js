@@ -69,6 +69,7 @@
       current=place.key;renderReading(place);
       mapPage.hidden=true;readingPage.hidden=false;
       readKeys.add(place.key);updateReadMarks();
+      byId('serviceTitle').hidden=true;
       byId('headerPlace').hidden=false;
       byId('headerPlace').textContent=place.name;
       byId('backButton').hidden=false;
@@ -78,6 +79,7 @@
       requestAnimationFrame(()=>window.scrollTo(0,Number(readingStates[place.key]?.y)||0));
     } else {
       current=null;mapPage.hidden=false;readingPage.hidden=true;
+      byId('serviceTitle').hidden=false;
       byId('headerPlace').hidden=true;
       byId('headerPlace').textContent='';
       byId('backButton').hidden=true;
@@ -100,6 +102,7 @@
   }
   byId('backButton').addEventListener('click',returnToMap);
   byId('serviceTitle').addEventListener('click',returnToMap);
+  byId('headerPlace').addEventListener('click',returnToMap);
   document.querySelectorAll('[data-return-map]').forEach(link=>link.addEventListener('click',returnToMap));
   // Give directly opened place links an in-app back destination as well.
   // Native browser back/forward and iOS edge-swipe remain untouched.
