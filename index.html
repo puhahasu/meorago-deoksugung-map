@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ffffff"><meta name="description" content="덕수궁 맵에서 궁금한 장소를 눌러 쉬운 설명을 읽어보세요. 머라고 현장 프로토타입."><title>머라고 · 덕수궁 맵</title>
-<link rel="icon" href="data:,"><link rel="stylesheet" href="./style.css?v=20261020-unified-map"><link rel="preload" href="./assets/deoksugung-map.jpg" as="image"><script defer src="./content.js"></script><script defer src="./app.js?v=20261020-unified-map"></script>
+<link rel="icon" href="data:,"><link rel="stylesheet" href="./style.css?v=20261020-v1-reading"><link rel="preload" href="./assets/deoksugung-map.jpg" as="image"><script defer src="./content.js"></script><script defer src="./app.js?v=20261020-v1-reading"></script>
 </head>
 <body>
 <a class="skip-link" href="#mainContent">본문으로 건너뛰기</a>
@@ -22,10 +22,9 @@
 </section>
 <article id="readingPage" aria-labelledby="placeHeading" hidden>
 <a href="#map" class="top-back" data-return-map>‹ 덕수궁 맵</a>
-<div class="reading-content"><div class="place-heading"><h1 id="placeHeading" tabindex="-1"></h1><span id="draftLabel" class="draft-label" hidden>검토 초안</span></div>
-<p class="result-intro">그게 무슨 얘기냐면</p><p id="summary" class="lead"></p>
-<details id="fullStory" class="story"><summary>더 자세히 읽기 <span aria-hidden="true">⌄</span></summary><div id="storyBody" class="prose"></div></details>
-<div id="footnotes"></div>
+<div class="reading-content"><h1 id="placeHeading" class="reading-place" tabindex="-1"></h1>
+<div class="summary-surface"><p id="draftLabel" class="draft-notice" hidden>검토 중인 설명</p><h2 class="result-intro">그게 무슨 얘기냐면</h2><p id="summary" class="lead"></p></div>
+<details id="fullStory" class="story"><summary><span id="storyToggleLabel">더 자세히 읽기</span><span class="story-chevron" aria-hidden="true"></span></summary><div class="full-translation"><div id="storyBody" class="prose"></div><div id="footnotes" class="reading-footnotes"></div></div></details>
 <details class="source-notes"><summary>자료와 검토 상태 <span aria-hidden="true">⌄</span></summary><p id="contentStatus"></p><p id="sourceNotes"></p><ul id="sourceList"></ul><p>미리 작성한 문안을 표시합니다. 사용 중 AI로 생성하거나 위치를 추적하지 않습니다.</p></details>
 </div>
 <nav class="reading-dock" aria-label="관람 이어가기"><a href="#map" data-return-map><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Z M9 3v16 M15 5v16"/></svg>맵으로 돌아가기</a></nav>

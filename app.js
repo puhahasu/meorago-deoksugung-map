@@ -50,6 +50,7 @@
     byId('summary').textContent=place.summary;
     byId('storyBody').replaceChildren(...place.paragraphs.map(paragraph));
     byId('fullStory').open=!!readingStates[place.key]?.expanded;
+    byId('storyToggleLabel').textContent=byId('fullStory').open?'접기':'더 자세히 읽기';
     const footnotes=byId('footnotes');footnotes.replaceChildren();
     for(const note of place.footnotes||[]) {
       const detail=document.createElement('details');detail.className='footnote';
@@ -89,7 +90,7 @@
   window.addEventListener('hashchange',route);
   window.addEventListener('pagehide',remember);
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')remember();});
-  byId('fullStory').addEventListener('toggle',()=>{if(current)remember();});
+  byId('fullStory').addEventListener('toggle',()=>{byId('storyToggleLabel').textContent=byId('fullStory').open?'접기':'더 자세히 읽기';if(current)remember();});
   if('scrollRestoration' in history) history.scrollRestoration='manual';
   restoreState();renderMap();updateReadMarks();applyZoom();
   // Do not overwrite a saved map position on initial navigation.
