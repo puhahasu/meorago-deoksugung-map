@@ -29,7 +29,7 @@
   }
   function paragraph(text) { const p=document.createElement('p');p.textContent=text;return p; }
   function renderMap() {
-    const pins = byId('mapPins'), list=byId('placeList'), svg=byId('mapLeaders');
+    const pins = byId('mapPins'), svg=byId('mapLeaders');
     for(const place of PLACES) {
       const a=document.createElement('a');a.href='#'+place.key;
       a.className='map-pin';
@@ -42,9 +42,6 @@
       for(const [attr,value] of Object.entries({x1:place.anchor[0],y1:place.anchor[1],x2:place.label[0],y2:place.label[1],class:'map-leader'}))line.setAttribute(attr,value);
       svg.append(line);
       const point=document.createElementNS(ns,'circle');point.setAttribute('cx',place.anchor[0]);point.setAttribute('cy',place.anchor[1]);point.setAttribute('r','.7');point.setAttribute('class','anchor');svg.append(point);
-      const li=document.createElement('li'), link=document.createElement('a');link.href='#'+place.key;
-      const name=document.createElement('span');name.textContent=place.name;
-      link.append(name);li.append(link);list.append(li);
     }
   }
   function updateReadMarks() { document.querySelectorAll('.map-pin').forEach(a=>a.classList.toggle('was-read',readKeys.has(a.dataset.key))); }
