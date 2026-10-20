@@ -1,7 +1,7 @@
 const PLACES = [
   {
     "key": "entrance",
-    "name": "덕수궁 입구",
+    "name": "덕수궁 소개",
     "summary": "덕수궁은 임진왜란으로 궁궐을 잃은 왕의 임시 거처였다가, 약 300년 뒤 대한제국 황제의 궁궐이 된 곳이야.",
     "status": "입구 확정 문안",
     "draft": false,
@@ -28,7 +28,7 @@ const PLACES = [
       70,
       91
     ],
-    "mapName": "대한문 · 입구",
+    "mapName": "덕수궁 소개",
     "provenance": "기존 로컬 저장 기준본"
   },
   {
